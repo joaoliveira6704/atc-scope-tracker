@@ -194,12 +194,10 @@ onMounted(() => {
         <div class='line-first'>
           ${marker.flight || marker.hex}${marker.t}
         </div>
-        ${marker.alt_baro}
-        <br />
-        ${Math.round(marker.track)}
-        <br/>
-        ${Math.round(marker.gs)}
-        <br/>
+        <div class='line-first'>${Math.round(marker.gs)} N${Math.round(
+              marker.track
+            )} ${marker.alt_baro}
+        </div>
         ${marker.squawk}
       </div>`,
             iconSize: [100, 16],
