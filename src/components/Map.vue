@@ -190,16 +190,23 @@ onMounted(() => {
           ${marker.flight}${marker.t}
         </div>
         <div class='line-first'>${
-          marker.alt_baro < 6000
+          marker.alt_baro < 4000
             ? `A${Math.round(marker.alt_baro).toString().slice(0, 2)}`
+            : marker.alt_baro < 10000
+            ? `0${Math.round(marker.alt_baro).toString().slice(0, 2)}`
             : Math.round(marker.alt_baro).toString().slice(0, 3)
-        }  ${
-              marker.nav_altitude_mcp < 6000
+        } ${
+              marker.nav_altitude_mcp < 4000
                 ? `A${Math.round(marker.nav_altitude_mcp)
                     .toString()
                     .slice(0, 2)}`
+                : marker.nav_altitude_mcp < 10000
+                ? `0${Math.round(marker.nav_altitude_mcp)
+                    .toString()
+                    .slice(0, 2)}`
                 : Math.round(marker.nav_altitude_mcp).toString().slice(0, 3)
-            } 
+            }
+
  N${Math.round(marker.mag_heading)}
         </div>
         <div class='line-first'>${Math.round(marker.tas)}
