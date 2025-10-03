@@ -91,7 +91,8 @@ async function getFlights() {
           marker.lon &&
           !isNaN(marker.lat) &&
           !isNaN(marker.lon) &&
-          marker.seen < 15
+          marker.seen < 15 &&
+          marker.alt_baro != "ground"
       ) || [];
 
     markers.value = validMarkers;
@@ -188,9 +189,18 @@ onMounted(() => {
         <div class='line-first'>
           ${marker.flight}${marker.t}
         </div>
-        <div class='line-first'>${Math.round(marker.alt_baro)} ${Math.round(
-              marker.nav_altitude_mcp
-            )} N${Math.round(marker.track)}
+        <div class='line-first'>${
+          marker.alt_baro < 6000
+            ? `A${Math.round(marker.alt_baro).toString().slice(0, 2)}`
+            : Math.round(marker.alt_baro).toString().slice(0, 3)
+        }  ${
+              marker.nav_altitude_mcp < 6000
+                ? `A${Math.round(marker.nav_altitude_mcp)
+                    .toString()
+                    .slice(0, 2)}`
+                : Math.round(marker.nav_altitude_mcp).toString().slice(0, 3)
+            } 
+ N${Math.round(marker.mag_heading)}
         </div>
         <div class='line-first'>${Math.round(marker.tas)}
         </div>
@@ -371,6 +381,13 @@ onMounted(() => {
           [41.1214, -9.272],
           [41.5335, -9.0157],
         ]"
+        color="#757575"
+        :fill="true"
+        fill-color="#43494c"
+        :weight="2"
+      ></l-polygon>
+      <l-polygon
+        :lat-lngs="[]"
         color="#757575"
         :fill="true"
         fill-color="#43494c"
