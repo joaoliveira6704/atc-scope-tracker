@@ -126,7 +126,7 @@ function updateMap() {
 function startPeriodicUpdates() {
   setInterval(() => {
     getFlights();
-  }, 3000);
+  }, 1500);
 }
 
 onMounted(() => {
