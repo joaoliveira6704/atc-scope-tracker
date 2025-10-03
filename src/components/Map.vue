@@ -74,10 +74,7 @@ function calculateDirectionLine(lat, lon, track, speed, distance = 0.001) {
 async function getFlights() {
   try {
     const response = await fetch(
-      "https://corsproxy.io/?" +
-        encodeURIComponent(
-          "https://api.adsb.lol/v2/lat/39.304436/lon/-11.082919/dist/250"
-        )
+      "https://api.airplanes.live/v2/point/39.304436/-11.082919/250"
     );
 
     if (!response.ok) {
@@ -129,7 +126,7 @@ function updateMap() {
 function startPeriodicUpdates() {
   setInterval(() => {
     getFlights();
-  }, 10000);
+  }, 3000);
 }
 
 onMounted(() => {
