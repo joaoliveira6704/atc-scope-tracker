@@ -87,7 +87,11 @@ async function getFlights() {
     const validMarkers =
       data.ac?.filter(
         (marker) =>
-          marker.lat && marker.lon && !isNaN(marker.lat) && !isNaN(marker.lon)
+          marker.lat &&
+          marker.lon &&
+          !isNaN(marker.lat) &&
+          !isNaN(marker.lon) &&
+          marker.seen < 15
       ) || [];
 
     markers.value = validMarkers;
@@ -99,7 +103,7 @@ async function getFlights() {
             marker.lat,
             marker.lon,
             marker.track,
-            marker.gs
+            marker.tas
           );
           if (linePoints) {
             return {
@@ -137,13 +141,6 @@ onMounted(() => {
 
 <template>
   <main>
-    <div class="controls">
-      <button @click="updateMap" class="update-btn">
-        Update Aircraft Positions
-      </button>
-      <span class="aircraft-count"> Aircraft: {{ markers.length }} </span>
-    </div>
-
     <l-map
       ref="mapRef"
       v-model:zoom="zoom"
@@ -191,7 +188,7 @@ onMounted(() => {
         <div class='line-first'>
           ${marker.flight || marker.hex}${marker.t}
         </div>
-        <div class='line-first'>${Math.round(marker.gs)} N${Math.round(
+        <div class='line-first'>${Math.round(marker.tas)} N${Math.round(
               marker.track
             )} ${marker.alt_baro}
         </div>
