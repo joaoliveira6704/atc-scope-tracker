@@ -195,17 +195,16 @@ onMounted(() => {
             : marker.alt_baro < 10000
             ? `0${Math.round(marker.alt_baro).toString().slice(0, 2)}`
             : Math.round(marker.alt_baro).toString().slice(0, 3)
-        } ${
-              marker.nav_altitude_mcp < 4000
-                ? `A${Math.round(marker.nav_altitude_mcp)
-                    .toString()
-                    .slice(0, 2)}`
-                : marker.nav_altitude_mcp < 10000
-                ? `0${Math.round(marker.nav_altitude_mcp)
-                    .toString()
-                    .slice(0, 2)}`
-                : Math.round(marker.nav_altitude_mcp).toString().slice(0, 3)
-            }
+        } 
+          ${marker.baro_rate > 250 ? '↑' : marker.baro_rate < -250 ? '↓' : ''}
+
+        ${
+          marker.nav_altitude_mcp < 4000
+            ? `A${Math.round(marker.nav_altitude_mcp).toString().slice(0, 2)}`
+            : marker.nav_altitude_mcp < 10000
+            ? `0${Math.round(marker.nav_altitude_mcp).toString().slice(0, 2)}`
+            : Math.round(marker.nav_altitude_mcp).toString().slice(0, 3)
+        }
 
  N${Math.round(marker.mag_heading)}
         </div>
