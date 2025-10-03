@@ -23,7 +23,7 @@ const mapRef = ref(null);
 const circleIcon = L.divIcon({
   className: "custom-aircraft-icon",
   html: `<svg height="12" width="12">
-    <circle cx="6" cy="6" r="4" fill="#00ff00" fill-opacity="0.8" stroke="#00aa00" stroke-width="1"/>
+    <circle cx="6" cy="6" r="4" fill="#96d796" fill-opacity="0.8" stroke="#96d796" stroke-width="1"/>
   </svg>`,
   iconSize: [12, 12],
   iconAnchor: [6, 6],
@@ -158,7 +158,7 @@ onMounted(() => {
         v-for="line in directionLines"
         :key="`line-${line.hex}`"
         :lat-lngs="line.line"
-        :color="'#00ff00'"
+        :color="'#288db5'"
         :weight="2"
         :opacity="1"
       />
@@ -184,15 +184,16 @@ onMounted(() => {
           L.divIcon({
             className: 'flight-label',
             html: `
-      <div class='flight-number'>
+      <div class='flight-number'>${marker.squawk}
         <div class='line-first'>
-          ${marker.flight || marker.hex}${marker.t}
+          ${marker.flight}${marker.t}
         </div>
-        <div class='line-first'>${Math.round(marker.tas)} N${Math.round(
-              marker.track
-            )} ${marker.alt_baro}
+        <div class='line-first'>${Math.round(marker.alt_baro)} ${Math.round(
+              marker.nav_altitude_mcp
+            )} N${Math.round(marker.track)}
         </div>
-        ${marker.squawk}
+        <div class='line-first'>${Math.round(marker.tas)}
+        </div>
       </div>`,
             iconSize: [100, 16],
             iconAnchor: [40, 20],
@@ -205,7 +206,7 @@ onMounted(() => {
           [41.230025, -8.676519],
           [41.263932, -8.6854],
         ]"
-        color="yellow"
+        color="white"
         weight="2"
       ></l-polyline>
       <!-- Portugal Area -->
@@ -252,7 +253,7 @@ onMounted(() => {
           [42.036588, -8.082363],
           [42.164974, -8.186733],
         ]"
-        color="white"
+        color="#757575"
         :fill="false"
         weight="1"
       ></l-polygon>
@@ -275,9 +276,9 @@ onMounted(() => {
           [40.494, -9.1111],
           [41.5203, -8.5037],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
       ></l-polygon>
 
@@ -301,9 +302,9 @@ onMounted(() => {
           [39.23, -8.01],
           [40.2358, -6.4906],
         ]"
-        color="#ffff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
       ></l-polygon>
 
@@ -323,9 +324,9 @@ onMounted(() => {
           [38.0, -9.0],
           [37.5958, -7.1348],
         ]"
-        color="#ff00ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
       ></l-polygon>
 
@@ -352,9 +353,9 @@ onMounted(() => {
           [39.3, -15.0],
           [42.0, -15.0],
         ]"
-        color="#00ffff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
       ></l-polygon>
       <!-- PORTO TMA Main Sector -->
@@ -370,9 +371,9 @@ onMounted(() => {
           [41.1214, -9.272],
           [41.5335, -9.0157],
         ]"
-        color="#ff6600"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 102, 0, 0.15)"
+        fill-color="#43494c"
         :weight="2"
       ></l-polygon>
 
@@ -380,9 +381,9 @@ onMounted(() => {
       <l-circle
         :lat-lng="[41.4975, -7.0939]"
         :radius="15742"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="2"
         dash-array="5,5"
       ></l-circle>
@@ -395,9 +396,9 @@ onMounted(() => {
           [41.8725, -8.8572],
           [42.0764, -8.5047],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -411,9 +412,9 @@ onMounted(() => {
           [41.8431, -8.5047],
           [42.0764, -8.5047],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -428,9 +429,9 @@ onMounted(() => {
           [41.8153, -8.1633],
           [41.8311, -7.5628],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -444,9 +445,9 @@ onMounted(() => {
           [41.8311, -7.5628],
           [41.9806, -7.1694],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -460,9 +461,9 @@ onMounted(() => {
           [41.9806, -7.1694],
           [41.9878, -6.7933],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -475,9 +476,9 @@ onMounted(() => {
           [41.6397, -6.7933],
           [41.9878, -6.7933],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -492,9 +493,9 @@ onMounted(() => {
           [41.4836, -7.9661],
           [41.6397, -8.0747],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -508,9 +509,9 @@ onMounted(() => {
           [41.3578, -7.5628],
           [41.6397, -7.5628],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -524,9 +525,9 @@ onMounted(() => {
           [41.3578, -7.1694],
           [41.6397, -7.1694],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -540,9 +541,9 @@ onMounted(() => {
           [41.3578, -6.7933],
           [41.6397, -6.7933],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -557,9 +558,9 @@ onMounted(() => {
           [41.1903, -7.9311],
           [41.3578, -7.9239],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -573,9 +574,9 @@ onMounted(() => {
           [41.0694, -7.5628],
           [41.3578, -7.5628],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -589,9 +590,9 @@ onMounted(() => {
           [41.0694, -7.1694],
           [41.3578, -7.1694],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -605,9 +606,9 @@ onMounted(() => {
           [41.0694, -6.7933],
           [41.3578, -6.7933],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -622,9 +623,9 @@ onMounted(() => {
           [40.9736, -7.8269],
           [41.0694, -7.9678],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -639,9 +640,9 @@ onMounted(() => {
           [40.8381, -7.4747],
           [41.0694, -7.5628],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -656,9 +657,9 @@ onMounted(() => {
           [40.6953, -7.1694],
           [41.0694, -7.1694],
         ]"
-        color="#ff0000"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 0, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -667,9 +668,9 @@ onMounted(() => {
       <l-circle
         :lat-lng="[40.09, -8.1786]"
         :radius="12964"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="2"
         dash-array="5,5"
       ></l-circle>
@@ -684,9 +685,9 @@ onMounted(() => {
           [40.9625, -8.0214],
           [41.0694, -7.9678],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -701,9 +702,9 @@ onMounted(() => {
           [40.7528, -8.3278],
           [40.8381, -8.1786],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -717,9 +718,9 @@ onMounted(() => {
           [40.6317, -8.1786],
           [40.8381, -8.1786],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -734,9 +735,9 @@ onMounted(() => {
           [40.6317, -7.8172],
           [40.8381, -7.8172],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -749,9 +750,9 @@ onMounted(() => {
           [40.3667, -8.7867],
           [40.6317, -8.5014],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -765,9 +766,9 @@ onMounted(() => {
           [40.3667, -8.5014],
           [40.6317, -8.5014],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -781,9 +782,9 @@ onMounted(() => {
           [40.3667, -8.1786],
           [40.6317, -8.1786],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -797,9 +798,9 @@ onMounted(() => {
           [40.3667, -7.8172],
           [40.6317, -7.8172],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -813,9 +814,9 @@ onMounted(() => {
           [40.09, -8.8856],
           [40.3667, -8.7867],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -829,9 +830,9 @@ onMounted(() => {
           [40.09, -8.6603],
           [40.3667, -8.5014],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -845,9 +846,9 @@ onMounted(() => {
           [40.09, -8.1786],
           [40.3667, -8.1786],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -861,9 +862,9 @@ onMounted(() => {
           [40.09, -7.8172],
           [40.3667, -7.8172],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -878,9 +879,9 @@ onMounted(() => {
           [39.8097, -8.6225],
           [40.09, -8.6603],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -894,9 +895,9 @@ onMounted(() => {
           [39.8097, -8.1786],
           [40.09, -8.1786],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -910,9 +911,9 @@ onMounted(() => {
           [39.8097, -7.8172],
           [40.09, -7.8172],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -927,9 +928,9 @@ onMounted(() => {
           [39.7236, -8.6181],
           [39.8097, -8.6225],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -943,9 +944,9 @@ onMounted(() => {
           [39.5533, -8.5275],
           [39.8097, -8.5275],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -961,9 +962,9 @@ onMounted(() => {
           [39.5533, -8.1786],
           [39.8097, -8.1786],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -979,9 +980,9 @@ onMounted(() => {
           [39.6761, -7.8172],
           [39.8097, -7.8172],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -996,9 +997,9 @@ onMounted(() => {
           [39.3069, -8.5275],
           [39.5533, -8.5275],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1013,9 +1014,9 @@ onMounted(() => {
           [39.3069, -7.7853],
           [39.605, -7.6083],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1029,9 +1030,9 @@ onMounted(() => {
           [39.0644, -7.9339],
           [39.3069, -7.7853],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1048,9 +1049,9 @@ onMounted(() => {
           [38.9983, -7.9694],
           [39.0644, -7.9339],
         ]"
-        color="#00ff00"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 255, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1059,9 +1060,9 @@ onMounted(() => {
       <l-circle
         :lat-lng="[37.315, -8.5825]"
         :radius="9260"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="2"
         dash-array="5,5"
       ></l-circle>
@@ -1078,9 +1079,9 @@ onMounted(() => {
           [38.5467, -8.3047],
           [38.7969, -8.1736],
         ]"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1095,9 +1096,9 @@ onMounted(() => {
           [38.6006, -7.8172],
           [38.7969, -7.8172],
         ]"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1114,9 +1115,9 @@ onMounted(() => {
           [38.3667, -8.4],
           [38.5467, -8.3047],
         ]"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1131,9 +1132,9 @@ onMounted(() => {
           [38.1342, -8.7914],
           [38.2003, -8.6736],
         ]"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1147,9 +1148,9 @@ onMounted(() => {
           [37.8986, -8.4],
           [38.2003, -8.4],
         ]"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
@@ -1164,16 +1165,16 @@ onMounted(() => {
           [37.5975, -8.8064],
           [37.8986, -8.8064],
         ]"
-        color="#0000ff"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(0, 0, 255, 0.1)"
+        fill-color="#43494c"
         :weight="1"
         dash-array="5,5"
       ></l-polygon>
 
       <!-- 35NM Circle around PRT VOR/DME -->
       <l-circle :lat-lng="[41.1449, -8.4108]" :radius="35000 * 1.852 * 1000">
-        color="#ffffff" :fill="false" :weight="1" dash-array="5,10" ></l-circle
+        color="#757575" :fill="false" :weight="1" dash-array="5,10" ></l-circle
       >
 
       <!-- Legend/Controls (optional) -->
@@ -1208,9 +1209,9 @@ onMounted(() => {
           [36.0323, -12.3329],
           [35.58, -12.0],
         ]"
-        color="#ff9900"
+        color="#757575"
         :fill="true"
-        fill-color="rgba(255, 153, 0, 0.1)"
+        fill-color="#43494c"
         :weight="1"
       ></l-polygon>
     </l-map>
@@ -1238,42 +1239,6 @@ main {
 .flight-number {
   max-width: 500px !important;
   overflow: hidden;
-}
-
-.controls {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 10px 15px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-}
-
-.update-btn {
-  background: #dc3545;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.update-btn:hover {
-  background: #c82333;
-}
-
-.aircraft-count {
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
 }
 
 .popup-content {
@@ -1329,7 +1294,7 @@ main {
 }
 /* Pure black map background */
 :deep(.leaflet-container) {
-  background: #000000 !important;
+  background: #383b3c !important;
 }
 
 /* Hide tile grid (if any remains) */
@@ -1344,7 +1309,7 @@ main {
 }
 
 :deep(.flight-number) {
-  color: #00ff00;
+  color: #96d796;
   font-family: "Space Mono", monospace;
   font-size: 12px;
   line-height: 1.4;
