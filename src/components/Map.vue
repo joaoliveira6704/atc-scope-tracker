@@ -1312,6 +1312,7 @@ onMounted(() => {
         weight="1"
       ></l-polygon>
     </l-map>
+    <footer class="text-center">Developed by: João Oliveira</footer>
   </main>
 </template>
 
